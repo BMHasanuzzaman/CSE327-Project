@@ -4,7 +4,7 @@
 
 
 
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,11 +19,11 @@
     <div class="modal-dialog modal-dialog-centered text-center">
         <div class="col-sm-8 modal-container">
             <div class="modal-content">
-               
+
                 <div class="col-12 user-img">
                     <img src="image/avatar/smoke.png" width="100" height="100">
                 </div>
-                
+
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
@@ -35,7 +35,7 @@
                             <label for="email">Email address</label>
                             <input type="email" class="form-control" id="email"  placeholder="Enter email">
                             <p>Provide a proper email (EX:username@domain.example)</p>
-                            
+
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
@@ -43,7 +43,13 @@
                             <p>Password must be between 6 - 12 charecters</p>
                             <!-- For php generated warning -->
                             <small>Warning</small>
-                            
+
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Confirm password">Confirm Password</label>
+                            <input type="password" class="form-control" id="cpassword" placeholder="Password">
+
                         </div>
                         <button type="submit" class="btn btn-outline-danger">Signup</button>
                         </div class="form-group">
