@@ -1,3 +1,9 @@
+<?php
+session_start();
+$connect = mysqli_connect("localhost", "root", "", "project327");
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,7 +18,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <title>Login</title>
+    <title>Signup</title>
   </head>
   <body>
 
@@ -25,38 +31,65 @@
                 </div>
 
                 <div class="modal-body">
-                    <form>
+                    <form method="POST">
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username"  placeholder="Enter username">
+                            <input type="text" class="form-control" id="username"  placeholder="Enter username" name="username">
                             <p>Username must be between 6 - 12 charecters</p>
                         </div>
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email"  placeholder="Enter email">
+                            <input type="email" class="form-control" id="email"  placeholder="Enter email" name="email">
                             <p>Provide a proper email (EX:username@domain.example)</p>
 
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="pass">
                             <p>Password must be between 6 - 12 charecters</p>
                             <!-- For php generated warning -->
-                            <small>Warning</small>
 
 
                         </div>
-                        <div class="form-group">
-                            <label for="Confirm password">Confirm Password</label>
-                            <input type="password" class="form-control" id="cpassword" placeholder="Password">
+						<div class="form-group">
+                            <label for="password">Confirm Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Confirm Password" name="CPassword">
 
                         </div>
-                        <button type="submit" class="btn btn-outline-danger">Signup</button>
+
+                        <button type="submit" class="btn btn-outline-danger" name="submit">Signup</button>
                         </div class="form-group">
                             <a href="index.php">Already have an account? Login</a>
                         </div>
                     </form>
                 </div>
+
+ <?php
+if (isset($_POST['email']))
+{
+	$username = $_POST['username'];
+	$email = $_POST['email'];
+	$pass =$_POST['pass'];
+	$CPassword =$_POST['CPassword'];
+
+	if($pass== $CPassword)
+	{
+
+		$query="INSERT INTO user VALUES ('$username','$email','$pass')";
+		$result= mysqli_query($connect,$query);
+		//$row = mysqli_fetch_array($result);
+
+			if($result)
+				echo '<script type= "text/javascript"> alert ("You have registered successfully") </script>';
+			else
+				echo '<script type= "text/javascript"> alert ("Check Again!") </script>';
+	}
+	else
+		echo '<script type= "text/javascript"> alert ("password didn not match") </script>';
+}
+
+
+?>
             </div>
         </div>
     </div>
