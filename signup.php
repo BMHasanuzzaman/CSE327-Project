@@ -79,8 +79,12 @@ if (isset($_POST['email']))
 		$result= mysqli_query($connect,$query);
 		//$row = mysqli_fetch_array($result);
 
-			if($result)
-				echo '<script type= "text/javascript"> alert ("You have registered successfully") </script>';
+    if($result)
+      {
+
+         header('location:index.php');
+         echo '<script type= "text/javascript"> alert ("You have registered successfully") </script>';
+      }
 			else
 				echo '<script type= "text/javascript"> alert ("Check Again!") </script>';
 	}
